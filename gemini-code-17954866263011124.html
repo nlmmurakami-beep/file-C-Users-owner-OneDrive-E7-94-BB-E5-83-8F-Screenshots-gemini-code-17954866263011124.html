@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新井みずき 紹介ページ｜あらい みずきの美容のへや形式</title>
+
+<style>
+body{
+  margin:0;
+  font-family:"Yu Gothic",sans-serif;
+  background:linear-gradient(#fff7fb,#fff0f7,#f8f1ff);
+  color:#444;
+}
+
+header{
+  background:#ffb6d9;
+  color:white;
+  text-align:center;
+  padding:80px 20px;
+}
+
+h1{
+  margin:0;
+  font-size:42px;
+}
+
+.subtitle{
+  margin-top:15px;
+  font-size:20px;
+}
+
+section{
+  padding:40px 20px;
+}
+
+.card{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  margin:20px auto;
+  max-width:800px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.card h2{
+  margin-top:0;
+  color:#ff5ca8;
+}
+
+.search-box{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:24px;
+}
+
+.search{
+  width:100%;
+  padding:15px;
+  border-radius:30px;
+  border:2px solid pink;
+  font-size:16px;
+  box-sizing:border-box;
+}
+
+button{
+  background:#ff9fcf;
+  color:white;
+  border:none;
+  padding:10px 20px;
+  margin:5px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:.3s;
+}
+
+button:hover{
+  background:#ff69b4;
+  transform:scale(1.06);
+}
+
+.article{
+  padding:15px;
+  margin-top:15px;
+  background:#fff7fb;
+  border-radius:15px;
+  transition:.3s;
+}
+
+.article:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 20px rgba(255,105,180,.3);
+}
+
+.article-banner{
+  width:100%;
+  height:180px;
+  background:linear-gradient(135deg,#ff69b4,#ffb6dc);
+  border-radius:15px;
+  margin-bottom:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  text-align:center;
+  padding:16px;
+  box-sizing:border-box;
+}
+
+.article-banner .banner-sub{
+  background:rgba(255,255,255,0.28);
+  padding:4px 12px;
+  border-radius:15px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.article-banner .banner-title{
+  font-size:24px;
+  font-weight:bold;
+  letter-spacing:0.06em;
+}
+
+.article h3{
+  margin:0 0 8px;
+  color:#ff69b4;
+}
+
+.article p{
+  margin:0 0 10px;
+  color:#666;
+  line-height:1.75;
+  font-size:14px;
+}
+
+.cat-badge{
+  display:inline-block;
+  background:#ffe5f2;
+  color:#ff5ca8;
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:12px;
+  margin-bottom:10px;
+  font-weight:bold;
+}
+
+.article-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:10px;
+}
+
+.like-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:#ff69b4;
+  color:white;
+  border:none;
+  padding:8px 16px;
+  margin:0;
+  border-radius:20px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.like-btn:hover{
+  background:#ff4fa3;
+  transform:scale(1.05);
+}
+
+.like-btn.is-liked{
+  background:#e0358b;
+  box-shadow:0 4px 12px rgba(224,53,139,.3);
+}
+
+.like-icon{
+  display:inline-block;
+}
+
+@keyframes heartPop{
+  0%{
+    transform:scale(1);
+  }
+  35%{
+    transform:scale(1.45) rotate(-8deg);
+  }
+  70%{
+    transform:scale(0.92) rotate(5deg);
+  }
+  100%{
+    transform:scale(1.12) rotate(0deg);
+  }
+}
+
+.like-btn.is-liked .like-icon{
+  animation:heartPop 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.like-btn:not(.is-liked) .like-icon{
+  animation:none;
+  transform:scale(1);
+}
+
+.ranking-list{
+  list-style:none;
+  padding:0;
+  margin:15px 0 0;
+}
+
+.ranking-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#fff7fb;
+  border-radius:14px;
+  padding:12px 16px;
+  margin-bottom:10px;
+  font-weight:bold;
+}
+
+.rank-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.rank-num{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:#ff9fcf;
+  color:#fff;
+  font-size:14px;
+}
+
+.ranking-item:nth-child(1) .rank-num{
+  background:#ff4fa3;
+}
+
+.ranking-item:nth-child(2) .rank-num{
+  background:#ff77bc;
+}
+
+.ranking-item:nth-child(3) .rank-num{
+  background:#ff9fcf;
+}
+
+.rank-score{
+  color:#ff5ca8;
+  font-size:14px;
+}
+
+footer{
+  background:#ff9fcf;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+.hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:10;
+}
+
+.heart{
+  position:absolute;
+  bottom:-20px;
+  font-size:20px;
+  animation:up 8s linear forwards;
+}
+
+@keyframes up{
+  from{
+    transform:translateY(0);
+    opacity:1;
+  }
+  to{
+    transform:translateY(-120vh);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<header>
+  <h1>💖 新井みずき 💖</h1>
+  <div class="subtitle">
+    きらきら笑顔とあざと可愛い魅力があふれる、日本で1番かわいい女の子♡
+  </div>
+</header>
+
+<section>
+
+  <div class="card">
+    <h2>🔍 プロフィール＆推し記事検索</h2>
+
+    <div class="search-box">
+      🔍
+      <input
+        class="search"
+        id="search"
+        type="text"
+        placeholder="プロフィールや推しポイントを検索..."
+        onkeyup="filterArticles()">
+    </div>
+
+    <h3>💖 カテゴリ検索</h3>
+
+    <button type="button" onclick="setCategory('プロフィール')">
+      💖 プロフィール
+    </button>
+
+    <button type="button" onclick="setCategory('推しポイント')">
+      🎀 推しポイント
+    </button>
+
+    <button type="button" onclick="setCategory('好きなもの')">
+      🍓 好きなもの
+    </button>
+
+    <button type="button" onclick="setCategory('')">
+      🌸 すべて
+    </button>
+
+    <p id="count">検索結果：4件</p>
+
+    <div id="article-list">
+      <div class="article" data-id="1" data-cat="プロフィール">
+        <div class="article-banner">
+          <span class="banner-sub">♥ 日本で1番かわいい女子 ♥</span>
+          <div class="banner-title">新井みずき</div>
+        </div>
+        <span class="cat-badge">プロフィール</span>
+        <h3>💖 基本プロフィール＆キャッチコピー</h3>
+        <p>みんなの心をぎゅっとつかむ、日本一のかわいいヒロイン。ぱっちりした瞳ととろけるような笑顔で、登場した瞬間に場の空気をぱっと明るくします。</p>
+        <div class="article-footer">
+          <button type="button" class="like-btn" data-count="999" aria-pressed="false">
+            <span class="like-icon">♡</span>
+            <span class="like-text">いいね</span>
+            <span class="like-count">999</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="article" data-id="2" data-cat="推しポイント">
+        <span class="cat-badge">推しポイント</span>
+        <h3>🎀 笑顔の破壊力＆おねだりリアクション</h3>
+        <p>笑ったときに目元がやわらかくなるくしゃっと笑顔と、驚いたり喜んだりするときの素直なリアクションが可愛すぎて思わず守りたくなります。</p>
+        <div class="article-footer">
+          <button type="button" class="like-btn" data-count="840" aria-pressed="false">
+            <span class="like-icon">♡</span>
+            <span class="like-text">いいね</span>
+            <span class="like-count">840</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="article" data-id="3" data-cat="好きなもの">
+        <span class="cat-badge">好きなもの</span>
+        <h3>🍓 いちごスイーツ＆ピンクコーデ</h3>
+        <p>いちごスイーツや甘いお菓子、リボンやフリル、淡いピンクのアイテムが大好き。天真爛漫で甘え上手なのに、周りへの気配りも忘れない優しさ派です。</p>
+        <div class="article-footer">
+          <button type="button" class="like-btn" data-count="777" aria-pressed="false">
+            <span class="like-icon">♡</span>
+            <span class="like-text">いいね</span>
+            <span class="like-count">777</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="article" data-id="4" data-cat="推しポイント">
+        <span class="cat-badge">推しポイント</span>
+        <h3>✨ ギャップの可愛さ＆お気に入り口癖</h3>
+        <p>普段はふわふわしているのに、好きなことには一生懸命なギャップが魅力。「えっ、ほんと？うれしい〜♡」「もっと一緒にいよ？」もきゅんとするポイントです。</p>
+        <div class="article-footer">
+          <button type="button" class="like-btn" data-count="680" aria-pressed="false">
+            <span class="like-icon">♡</span>
+            <span class="like-text">いいね</span>
+            <span class="like-count">680</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>👑 人気記事ランキング</h2>
+    <p>「いいね」を押すと、リアルタイムで人気ランキングの順位と数が変わります💖</p>
+    <ul class="ranking-list" id="ranking-list"></ul>
+  </div>
+
+</section>
+
+<footer>
+  💖 新井みずき 紹介ページ 💖
+</footer>
+
+<script>
+let selectedCategory = '';
+
+function filterArticles() {
+  const keyword = document.getElementById('search').value.trim().toLowerCase();
+  const articles = document.querySelectorAll('#article-list .article');
+  let visibleCount = 0;
+
+  articles.forEach((article) => {
+    const title = article.querySelector('h3').textContent.toLowerCase();
+    const desc = article.querySelector('p').textContent.toLowerCase();
+    const cat = article.dataset.cat || '';
+    const matchKeyword =
+      !keyword ||
+      title.includes(keyword) ||
+      desc.includes(keyword) ||
+      cat.toLowerCase().includes(keyword);
+    const matchCat = !selectedCategory || cat === selectedCategory;
+
+    if (matchKeyword && matchCat) {
+      article.style.display = '';
+      visibleCount++;
+    } else {
+      article.style.display = 'none';
+    }
+  });
+
+  document.getElementById('count').textContent = `検索結果：${visibleCount}件`;
+}
+
+function setCategory(cat) {
+  selectedCategory = cat;
+  filterArticles();
+}
+
+function updateRanking() {
+  const rankingList = document.getElementById('ranking-list');
+  const articles = Array.from(document.querySelectorAll('#article-list .article'));
+
+  const ranked = articles
+    .map((article) => {
+      const title = article.querySelector('h3').textContent;
+      const countEl = article.querySelector('.like-count');
+      const likes = Number(countEl ? countEl.textContent : 0) || 0;
+      return { title, likes };
+    })
+    .sort((a, b) => b.likes - a.likes);
+
+  rankingList.innerHTML = ranked
+    .map((item, idx) => `
+      <li class="ranking-item">
+        <div class="rank-left">
+          <span class="rank-num">${idx + 1}</span>
+          <span>${item.title}</span>
+        </div>
+        <span class="rank-score">♥ ${item.likes}</span>
+      </li>
+    `)
+    .join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.like-btn').forEach((btn) => {
+    const iconEl = btn.querySelector('.like-icon');
+    const textEl = btn.querySelector('.like-text');
+    const countEl = btn.querySelector('.like-count');
+
+    let count = Number(btn.dataset.count) || 0;
+    let isLiked = btn.classList.contains('is-liked');
+
+    const render = () => {
+      btn.classList.toggle('is-liked', isLiked);
+      btn.setAttribute('aria-pressed', String(isLiked));
+      if (iconEl) iconEl.textContent = isLiked ? '♥' : '♡';
+      if (textEl) textEl.textContent = isLiked ? 'いいね済み' : 'いいね';
+      if (countEl) countEl.textContent = String(count);
+    };
+
+    render();
+
+    btn.addEventListener('click', () => {
+      isLiked = !isLiked;
+      count = isLiked ? count + 1 : Math.max(0, count - 1);
+      render();
+
+      if (isLiked && iconEl) {
+        iconEl.style.animation = 'none';
+        void iconEl.offsetWidth;
+        iconEl.style.animation = '';
+      }
+
+      updateRanking();
+    });
+  });
+
+  updateRanking();
+
+  const heartsContainer = document.querySelector('.hearts');
+  const heartChars = ['💖', '💗', '💕', '🌸'];
+  setInterval(() => {
+    if (!heartsContainer) return;
+    const heart = document.createElement('span');
+    heart.className = 'heart';
+    heart.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+    heart.style.left = `${Math.random() * 100}%`;
+    heart.style.fontSize = `${16 + Math.random() * 14}px`;
+    heartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+  }, 1400);
+});
+</script>
+
+</body>
+</html>
